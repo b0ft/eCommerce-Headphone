@@ -1,13 +1,21 @@
 * {
     margin: 0;
     padding: 0;
+    user-select: none;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
     font-family: 'Alata', sans-serif;
 }
 
+
 .navbar {
+    position: fixed;
+    z-index: 1;
     display: flex;
     align-items: center;
     background-color: #ececec;
@@ -58,7 +66,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    min-height: 94vh;
+    min-height: 100vh;
 }
 
 .banner {
@@ -69,6 +77,23 @@ body {
 
 .banner-title {
     margin-bottom: 3rem;
+}
+
+.banner-btn {
+    background-color: black;
+    padding: 5px;
+    color: white;
+    font-family: 'Alata', sans-serif;
+    transition: .3s;
+    outline-style: none;
+    text-decoration: none;
+}
+
+.banner-btn:hover {
+    background-color: white;
+    padding: 5px;
+    color: black;
+    font-family: 'Alata', sans-serif;
 }
 
 .products {
@@ -133,9 +158,84 @@ body {
     color: #cccccc;
 }
 
+.cancel {
+    border: 2px solid red;
+    background-color: white;
+    color: red;
+}
+
+.cancel:hover {
+    border: 2px solid white;
+    background-color: red;
+    color: white;
+}
+
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    /* visibility: hidden; */
+    width: 100%;
+    color: white;
+}
+
+
+.show-cart {
+    position: fixed;
+    margin-top: 6vh;
+    top: 0;
+    right: 0;
+    width: 30vw;
+    height: 100%;
+    background-color: #0b032d;
+    overflow: scroll;
+    z-index: 2;
+}
+
+.your-cart {
+    margin: 10px;
+    text-align: center;
+}
+
+.x {
+    font-size: 1.5rem;
+    border-radius: 50%;
+    border: 3px solid white;
+    padding: 5px;
+    margin: 25px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.cart-overlay-item {
+    align-items: center;
+    margin: 2rem;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-column-gap: 1.5rem;
+}
+
+.cart-overlay-item img {
+    width: 75px;
+    height: 75px;
+}
+
+.up, 
+.down {
+    cursor: pointer;
+}
+
+.remove {
+    cursor: pointer;
+}
+
+
 .footer {
     background-color: #cccccc;
     text-align: center;
     padding: 10px;
     margin: auto;
 }
+
