@@ -81,6 +81,7 @@ body {
 
 .banner-btn {
     background-color: black;
+    border: 1px solid white;
     padding: 5px;
     color: white;
     font-family: 'Alata', sans-serif;
@@ -146,7 +147,10 @@ body {
     border-radius: 50%;
     border: 2px solid black;
     cursor: pointer;
-    transition: .3s;
+}
+
+.hidden {
+    visibility: hidden;
 }
 
 .tambah:focus {
@@ -159,13 +163,11 @@ body {
 }
 
 .cancel {
-    border: 2px solid red;
     background-color: white;
     color: red;
 }
 
 .cancel:hover {
-    border: 2px solid white;
     background-color: red;
     color: white;
 }
@@ -220,6 +222,29 @@ body {
 .cart-overlay-item img {
     width: 75px;
     height: 75px;
+}
+
+.cart-content {
+    margin: 20px;
+}
+
+.reset {
+    margin-top: 10px;
+    background-color: white;
+    border: 1px solid white;
+    padding: 5px;
+    color: black;
+    font-family: 'Alata', sans-serif;
+    transition: .3s;
+    outline-style: none;
+    text-decoration: none;
+}
+
+.reset:hover {
+    background-color: black;
+    padding: 5px;
+    color: white;
+    font-family: 'Alata', sans-serif;
 }
 
 .up, 

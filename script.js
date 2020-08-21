@@ -1,4 +1,5 @@
 let total = document.querySelector('.total');
+const cartItem = document.querySelector('.cart-item');
 
 // Membuka overlay cart
 const cart = document.getElementById('cart');
@@ -15,33 +16,50 @@ document.addEventListener('click', function(e) {
         let tempTotal = temp - totalHarga;
         total.innerHTML = tempTotal;
     }
+    // Tambah / kurang jumlah barang
+    if(e.target.classList.contains('up')){
+        let tempJumlah = parseInt(e.target.nextElementSibling.nextElementSibling.textContent);
+        tempJumlah++;
+        let temp = parseInt(cartItem.textContent);
+        temp++;
+        cartItem.innerHTML = temp;
+        e.target.nextElementSibling.nextElementSibling.innerHTML = tempJumlah;
+
+        let temp2 = parseInt(total.innerHTML.split(".").join(""));
+        let hargaAsli = parseInt(e.target.parentElement.previousElementSibling.childNodes[1].nextElementSibling.textContent.split("Rp")[1].split(".").join(""));
+        temp2 += hargaAsli;
+        total.innerHTML = temp2.toLocaleString('id-ID');
+    }
+    if(e.target.classList.contains('down')){
+        let tempJumlah = parseInt(e.target.previousElementSibling.previousElementSibling.textContent);
+        if(tempJumlah != 1){
+            tempJumlah--;        
+            let temp = parseInt(cartItem.textContent);
+            temp--;
+            cartItem.innerHTML = temp;
+    
+            let temp2 = parseInt(total.innerHTML.split(".").join(""));
+            let hargaAsli = parseInt(e.target.parentElement.previousElementSibling.childNodes[1].nextElementSibling.textContent.split("Rp")[1].split(".").join(""));
+            temp2 -= hargaAsli;
+            total.innerHTML = temp2.toLocaleString('id-ID');
+        }
+        e.target.previousElementSibling.previousElementSibling.innerHTML = tempJumlah;
+    }
+    if(e.target.classList.contains("reset")){
+        cartContent.innerHTML = "";
+        total.innerHTML = 0;
+        cartItem.innerHTML = 0;
+        const tambah = document.querySelectorAll('#tambah');
+        tambah.forEach(e => {
+            e.classList.remove("hidden");
+        });
+    }
 });
 
 
 
 cart.addEventListener('click', function() {
     overlay.classList.toggle('show-cart');   
-
-
-    // Tambah / kurang jumlah barang
-    const up = document.querySelectorAll('.up');
-    up.forEach(function(e) {
-        e.addEventListener('click', function(u) {
-            let tempJumlah = parseInt(u.target.nextElementSibling.nextElementSibling.textContent);
-            tempJumlah++;
-            u.target.nextElementSibling.nextElementSibling.innerHTML = tempJumlah;
-        });
-    });
-    const down = document.querySelectorAll('.down');
-    down.forEach(function(e) {
-        e.addEventListener('click', function(d) {
-            let tempJumlah = parseInt(d.target.previousElementSibling.previousElementSibling.textContent);
-            if(tempJumlah != 1){
-                tempJumlah--;
-            }
-            d.target.previousElementSibling.previousElementSibling.innerHTML = tempJumlah;
-        });
-    });
 });
 
 // Menutup cart
@@ -56,13 +74,13 @@ const cartContent = document.querySelector('.cart-content');
 const tambah = document.querySelectorAll('#tambah');
 tambah.forEach(function(e) {
     e.addEventListener('click', function(t) {
+        t.target.classList.add("hidden");
         const hargaRp = t.target.parentElement.nextElementSibling.nextElementSibling.textContent;
         const nama = t.target.parentElement.nextElementSibling.textContent;
         const gambar = t.target.nextElementSibling.getAttribute('src');
         const harga = hargaRp.split("Rp")[1].split(".").join("");
-        t.target.classList.toggle("cancel");
         
-            t.target.textContent == "+" ? t.target.textContent = "✓" : t.target.textContent = "+";
+        // t.target.textContent == "+" ? t.target.textContent = "✓" : t.target.textContent = "+";
         
 
         cartContent.innerHTML += `<div class="cart-overlay-item">
@@ -78,6 +96,9 @@ tambah.forEach(function(e) {
             <span class="down">&darr;</span>
         </div>
         </div>`;
+        let tempCount = parseInt(cartItem.textContent);
+        tempCount++;
+        cartItem.innerHTML = tempCount;
 
         
 
@@ -88,9 +109,3 @@ tambah.forEach(function(e) {
 });
 
 
-
-
-
-// tambah.addEventListener('click', function() {
-//     console.log(tambah.parentElement.nextElementSibling.nextElementSibling);
-// });
