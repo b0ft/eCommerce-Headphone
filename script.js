@@ -1,5 +1,6 @@
 let total = document.querySelector('.total');
 const cartItem = document.querySelector('.cart-item');
+const produk = document.querySelectorAll('.product');
 
 // Membuka overlay cart
 const cart = document.getElementById('cart');
@@ -7,14 +8,28 @@ const overlay = document.querySelector('.total-cart');
 
 document.addEventListener('click', function(e) {
     if(e.target.classList.contains('remove')){
-        e.target.parentElement.parentElement.remove();
         const hargaRp = e.target.previousElementSibling.textContent;
+        const namaItemCart = e.target.previousElementSibling.previousElementSibling.textContent;
+        e.target.parentElement.parentElement.remove();
+        // const tambah = document.querySelectorAll('#tambah');
+        produk.forEach(p => {
+            const namaProduk = p.childNodes[1].nextElementSibling.nextElementSibling;
+            if(namaProduk.textContent === namaItemCart){
+                namaProduk.parentElement.childNodes[1].childNodes[1].classList.remove('hidden');
+            }
+        });
+        // e.target.classList.remove("hidden");
+        // console.log(e.target);
         const harga = hargaRp.split("Rp")[1].split(".").join("");
         const jumlahBrg = e.target.parentElement.nextElementSibling.childNodes[1].nextElementSibling.nextElementSibling.textContent;
         const totalHarga = parseInt(harga * parseInt(jumlahBrg));
         let temp = parseInt(total.innerHTML.split(".").join(""));
         let tempTotal = temp - totalHarga;
-        total.innerHTML = tempTotal;
+        total.innerHTML = tempTotal.toLocaleString('id-ID');
+
+        let temp3 = parseInt(cartItem.textContent);
+        temp3 -= parseInt(jumlahBrg);
+        cartItem.innerHTML = temp3;
     }
     // Tambah / kurang jumlah barang
     if(e.target.classList.contains('up')){
@@ -75,8 +90,8 @@ const tambah = document.querySelectorAll('#tambah');
 tambah.forEach(function(e) {
     e.addEventListener('click', function(t) {
         t.target.classList.add("hidden");
-        const hargaRp = t.target.parentElement.nextElementSibling.nextElementSibling.textContent;
-        const nama = t.target.parentElement.nextElementSibling.textContent;
+        const hargaRp = t.target.parentElement.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
+        const nama = t.target.parentElement.nextElementSibling.nextElementSibling.textContent;
         const gambar = t.target.nextElementSibling.getAttribute('src');
         const harga = hargaRp.split("Rp")[1].split(".").join("");
         

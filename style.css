@@ -252,8 +252,15 @@ body {
     cursor: pointer;
 }
 
+
 .remove {
     cursor: pointer;
+    transition: all .3s;
+}
+
+.remove:hover {
+    color: black;
+    text-shadow: 0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white;
 }
 
 
