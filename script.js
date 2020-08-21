@@ -18,8 +18,6 @@ document.addEventListener('click', function(e) {
                 namaProduk.parentElement.childNodes[1].childNodes[1].classList.remove('hidden');
             }
         });
-        // e.target.classList.remove("hidden");
-        // console.log(e.target);
         const harga = hargaRp.split("Rp")[1].split(".").join("");
         const jumlahBrg = e.target.parentElement.nextElementSibling.childNodes[1].nextElementSibling.nextElementSibling.textContent;
         const totalHarga = parseInt(harga * parseInt(jumlahBrg));
