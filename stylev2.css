@@ -22,7 +22,6 @@ body {
     height: 6vh;
     width: 100%;
     text-align: center;
-    
     font-size: 28px;
 }
 
@@ -60,7 +59,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    min-height: calc(100vh - 60px);
+    min-height: 100vh;
 }
 
 .banner {
@@ -80,19 +79,19 @@ body {
     transition: .3s;
     outline-style: none;
     text-decoration: none;
+    offset-block-end: 20;
 }
 
 .banner-btn:hover {
     background-color: white;
     padding: 5px;
     color: black;
-    
 }
 
 .products {
     color: #1c1c1c;
     text-align: center;
-    margin: auto;
+    padding: 5vh;
 }
 
 .title {
@@ -268,4 +267,6 @@ body {
     padding: 10px;
     margin: auto;
 }
-
+a {
+    text-decoration: none;
+}
